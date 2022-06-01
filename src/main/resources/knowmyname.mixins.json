@@ -1,12 +1,10 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.fabricmc.example.mixin",
+  "package": "com.possible_triangle.knowmyname.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-  ],
-  "client": [
-    "ExampleMixin"
+    "BlockEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
