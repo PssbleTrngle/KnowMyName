@@ -86,6 +86,7 @@ if (ENV.CURSEFORGE_TOKEN) curseforge {
         addGameVersion 'Fabric'
         changelog = ENV.CHANGELOG
         changelogType = 'markdown'
+        releaseType = project.release_type
     }
 }
 
@@ -95,4 +96,5 @@ if (ENV.MODRINTH_TOKEN) modrinth {
     changelog = ENV.CHANGELOG
     gameVersions = [project.minecraft_version]
     loaders = ["fabric"]
+    versionType = project.release_type
 }
