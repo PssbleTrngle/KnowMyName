@@ -38,13 +38,13 @@ body:
       label: Minecraft Loader
       multiple: false
       options:
-        - fabric
-        - forge
+        - Fabric
+        - Forge
 
   - type: input
     id: loader-version
     attributes:
-      label: Mod Version
+      label: Fabric/Forge Version
     validations:
       required: true
 
