@@ -19,6 +19,15 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           distribution: corretto
+          
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
       
       - name: make gradle wrapper executable
         if: ${{ runner.os != 'Windows' }}
