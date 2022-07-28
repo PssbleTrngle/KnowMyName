@@ -97,4 +97,5 @@ if (ENV.MODRINTH_TOKEN) modrinth {
     gameVersions = [project.minecraft_version]
     loaders = ["fabric"]
     versionType = project.release_type
+    uploadFile = jar
 }
