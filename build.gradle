@@ -54,7 +54,7 @@ java {
 
 jar {
 	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}"}
+		rename { "${it}_${project.archives_base_name}"}
 	}
 }
 
@@ -63,6 +63,8 @@ publishing {
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/pssbletrngle/${project.archives_base_name}")
+	    version = version
+	    artifactId = project.archives_base_name
             credentials {
                 username = ENV.GITHUB_ACTOR
                 password = ENV.GITHUB_TOKEN
