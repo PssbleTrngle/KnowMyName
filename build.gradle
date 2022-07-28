@@ -12,7 +12,6 @@ def ENV = System.getenv()
 
 archivesBaseName = project.archives_base_name
 version = project.mod_version
-group = project.maven_group
 
 repositories {
 	// Add repositories to retrieve artifacts from in here.
@@ -87,7 +86,7 @@ if (ENV.CURSEFORGE_TOKEN) curseforge {
         changelogType = 'markdown'
         releaseType = project.release_type
         mainArtifact(jar) {
-          displayName = version
+          displayName = "Version ${version}"
         }
     }
 }
@@ -96,6 +95,7 @@ if (ENV.MODRINTH_TOKEN) modrinth {
     token = ENV.MODRINTH_TOKEN
     projectId = project.modrinth_project_id
     versionNumber = version
+    versionName = "Version ${version}"
     changelog = ENV.CHANGELOG
     gameVersions = [project.minecraft_version]
     loaders = ["fabric"]
