@@ -93,6 +93,7 @@ if (ENV.CURSEFORGE_TOKEN) curseforge {
 }
 
 if (ENV.MODRINTH_TOKEN) modrinth {
+    token = ENV.MODRINTH_TOKEN
     projectId = project.modrinth_project_id
     versionNumber = version
     changelog = ENV.CHANGELOG
