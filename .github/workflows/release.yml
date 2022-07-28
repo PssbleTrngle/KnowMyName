@@ -27,11 +27,13 @@ jobs:
         run: ./gradlew curseforge
         env:
           CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+          CHANGELOG: ${{ github.event.release.body }}
           
       - name: upload to modrinth
         run: ./gradlew modrinth
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          CHANGELOG: ${{ github.event.release.body }}
           
       - name: publish to github packages
         run: ./gradlew publish
