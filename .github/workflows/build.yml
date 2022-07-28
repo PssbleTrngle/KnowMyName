@@ -18,6 +18,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: ${{ matrix.java }}
+          distribution: corretto
       
       - name: make gradle wrapper executable
         if: ${{ runner.os != 'Windows' }}
