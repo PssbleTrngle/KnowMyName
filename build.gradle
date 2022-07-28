@@ -1,6 +1,9 @@
 plugins {
 	id 'fabric-loom' version '0.12-SNAPSHOT'
 	id 'maven-publish'
+    	id 'net.minecraftforge.gradle.forge' version '2.0.2'
+	id 'com.matthewprenger.cursegradle' version '1.4.0'
+    	id "com.modrinth.minotaur" version "2.+"
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -16,6 +19,7 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+        gradlePluginPortal()
 }
 
 dependencies {
@@ -54,14 +58,17 @@ jar {
 	}
 }
 
+
+def ENV = System.getenv()
+
 publishing {
     repositories {
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/pssbletrngle/${project.archives_base_name}")
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                username = ENV.GITHUB_ACTOR
+                password = ENV.GITHUB_TOKEN
             }
         }
     }
@@ -70,4 +77,23 @@ publishing {
             from(components.java)
         }
     }
+}
+
+if (ENV.CURSEFORGE_TOKEN) curseforge {
+    apiKey = ENV.CURSEFORGE_TOKEN
+    project {
+        id = project.curseforge_project_id
+        addGameVersion project.minecraft_version
+        addGameVersion 'Fabric'
+        changelog = ENV.CHANGELOG
+        changelogType = 'markdown'
+    }
+}
+
+if (ENV.MODRINTH_TOKEN) modrinth {
+    projectId = project.modrinth_project_id
+    versionNumber = project.mod_version
+    changelog = ENV.CHANGELOG
+    gameVersions = [project.minecraft_version]
+    loaders = ["fabric"]
 }
