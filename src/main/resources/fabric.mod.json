@@ -12,7 +12,7 @@
     "issues": "https://github.com/PssbleTrngle/KnowMyName/issues"
   },
   "license": "CC0-1.0",
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
     "main": [
       "com.possible_triangle.knowmyname.KnowMyNameMod"
