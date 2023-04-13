@@ -76,7 +76,7 @@ publishing {
     }
 }
 
-def possible_minecraft_versions = project.possible_minecraft_versions.split(",")
+def possible_minecraft_versions = project.possible_minecraft_versions.split(",").toList()
 
 if (ENV.CURSEFORGE_TOKEN) curseforge {
     apiKey = ENV.CURSEFORGE_TOKEN
