@@ -76,11 +76,15 @@ publishing {
     }
 }
 
+def possible_minecraft_versions = project.possible_minecraft_versions.split(",")
+
 if (ENV.CURSEFORGE_TOKEN) curseforge {
     apiKey = ENV.CURSEFORGE_TOKEN
     project {
         id = project.curseforge_project_id
-        addGameVersion project.minecraft_version
+        possible_minecraft_versions.each {
+            addGameVersion it
+        }
         addGameVersion 'Fabric'
         changelog = ENV.CHANGELOG
         changelogType = 'markdown'
@@ -97,7 +101,7 @@ if (ENV.MODRINTH_TOKEN) modrinth {
     versionNumber = version
     versionName = "Version ${version}"
     changelog = ENV.CHANGELOG
-    gameVersions = [project.minecraft_version]
+    gameVersions = possible_minecraft_versions
     loaders = ["fabric"]
     versionType = project.release_type
     uploadFile = jar
