@@ -13,6 +13,17 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: loader
+    attributes:
+      label: Loader
+      multiple: false
+      options:
+        - forge
+        - fabric
+    validations:
+      required: true
+
   - type: input
     id: version-version
     attributes:
@@ -20,29 +31,10 @@ body:
     validations:
       required: true
 
-  - type: dropdown
+  - type: input
     id: minecraft-version
     attributes:
       label: Minecraft Version
-      multiple: false
-      options:
-        - 1.16
-        - 1.18
-        - 1.19
-
-  - type: dropdown
-    id: loader
-    attributes:
-      label: Minecraft Loader
-      multiple: false
-      options:
-        - Fabric
-        - Forge
-
-  - type: input
-    id: loader-version
-    attributes:
-      label: Fabric/Forge Version
     validations:
       required: true
 
@@ -51,4 +43,4 @@ body:
     attributes:
       label: Relevant log output
       description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
+      render: Shell
