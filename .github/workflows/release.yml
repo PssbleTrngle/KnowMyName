@@ -7,6 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     timeout-minutes: 20
+    permissions:
+      contents: write
+      packages: write
     steps:
       - uses: actions/checkout@v3
 
@@ -21,8 +24,8 @@ jobs:
       - name: Update mod version
         uses: christian-draeger/write-properties@1.0.1
         with:
-          path: 'gradle.properties'
-          property: 'mod_version'
+          path: "gradle.properties"
+          property: "mod_version"
           value: ${{ github.event.release.tag_name }}
 
       - name: Build and upload
@@ -34,14 +37,11 @@ jobs:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
           CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           CHANGELOG: ${{ github.event.release.body }}
+          CI: true
 
       - name: Upload to github releases
         if: ${{ github.event_name == 'release' }}
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: svenstaro/upload-release-action@v2
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: build/libs/KnowMyName-${{ github.event.release.tag_name }}.jar
-          asset_name: KnowMyName-${{ github.event.release.tag_name }}.jar
-          asset_content_type: application/java-archive
+          file: fabric/build/libs/knowmyname-${{ github.event.release.tag_name }}.jar
+          asset_name: knowmyname-${{ github.event.release.tag_name }}.jar

@@ -1,30 +1,28 @@
 {
   "schemaVersion": 1,
-  "id": "knowmyname",
-  "version": "${version}",
-  "name": "Know my Name!",
-  "description": "",
-  "authors": [
-    "possible_triangle"
-  ],
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+
+  "name": "${mod_name}",
+  "description": "Allows easy customization of villager trades using datapacks",
+  "authors": ["${mod_author}"],
   "contact": {
-    "sources": "https://github.com/PssbleTrngle/KnowMyName",
-    "issues": "https://github.com/PssbleTrngle/KnowMyName/issues"
+    "sources": "https://github.com/${repository}",
+    "issues": "https://github.com/${repository}/issues"
   },
+
   "license": "CC0-1.0",
+
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "com.possible_triangle.knowmyname.KnowMyNameMod"
-    ]
+    "main": ["com.possible_triangle.knowmyname.KnowMyNameMod"]
   },
-  "mixins": [
-    "knowmyname.mixins.json"
-  ],
+  "mixins": ["${mod_id}.mixins.json"],
+
   "depends": {
-    "fabricloader": ">=0.14.6",
+    "fabricloader": ">=0.14",
     "fabric": "*",
-    "minecraft": "~1.19",
+    "minecraft": "1.19.x",
     "java": ">=17"
   }
 }
