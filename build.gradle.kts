@@ -1,15 +1,22 @@
-import net.fabricmc.loom.api.LoomGradleExtensionAPI
-
 plugins {
     id("net.somethingcatchy.gradle") version ("0.0.7")
 }
 
 val yarn_mappings: String by extra
+val continuity_version: String by extra
 
 fabric {
     mappings {
         dependencies.create("net.fabricmc:yarn:${yarn_mappings}:v2")
     }
+}
+
+repositories {
+    modrinthMaven()
+}
+
+dependencies {
+    modRuntimeOnly("maven.modrinth:continuity:${continuity_version}")
 }
 
 enablePublishing()
