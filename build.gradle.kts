@@ -6,6 +6,8 @@ val yarn_mappings: String by extra
 val continuity_version: String by extra
 
 fabric {
+    enableMixins()
+
     mappings {
         dependencies.create("net.fabricmc:yarn:${yarn_mappings}:v2")
     }
