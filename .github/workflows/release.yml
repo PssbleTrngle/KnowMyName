@@ -43,5 +43,5 @@ jobs:
         if: ${{ github.event_name == 'release' }}
         uses: svenstaro/upload-release-action@v2
         with:
-          file: fabric/build/libs/knowmyname-${{ github.event.release.tag_name }}.jar
+          file: build/libs/knowmyname-${{ github.event.release.tag_name }}.jar
           asset_name: knowmyname-${{ github.event.release.tag_name }}.jar
